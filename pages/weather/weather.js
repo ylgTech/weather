@@ -11,17 +11,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    code:'',
+    code: '',
     date: '',
     CustomBar: app.globalData.CustomBar,
-    imgUrl: '../../images/warm-bg.jpg',
+    pBackgroundImg: '../../images/sunny.jpg',
     temp: 15,
-  },
-  searchIcon:function(e) {
-    location =  e.detail.value
-    console.log(location)
-    this.onLoad();
-    this.onShow();
   },
   /**
    * 生命周期函数--监听页面加载
@@ -31,7 +25,7 @@ Page({
     var month = util.formatDate_month(new Date());
     var day = util.formatDate_day(new Date());
     var time
-    var code
+    var imgUrl
     switch (month) {
       case '010':
         time = 'Jan' + day;
@@ -85,12 +79,12 @@ Page({
         that.setData({
           basic: res.data.HeWeather6[0].basic,
           now: res.data.HeWeather6[0].now,
+          code: res.data.HeWeather6[0].now.cond_code,
         })
+        console.log('code1: ' + res.data.HeWeather6[0].now.cond_code)
+        that.changeImg(res.data.HeWeather6[0].now.cond_code);
       }
     })
-    // switch(that.now.cond_code){
-
-    // }
     console.log(urlPrefix)
     var that = this
     // console.log(app.globalData)
@@ -151,5 +145,38 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+  searchIcon: function(e) {
+    location = e.detail.value
+    console.log(location)
+    console.log(this.data.code)
+    this.onLoad();
+    this.onShow();
+  },
+  changeImg: function(name) {
+    var i = name;
+    console.log('i' + i)
+    var bgImg;
+    if (i == 200) {
+      bgImg = '../../images/cloudy.jpg'
+    }
+    if (i == 104) {
+      bgImg = '../../images/104.jpg'
+    }
+    if (i == 501) {
+      bgImg = '../../images/foggy.jpg'
+    }
+    if (i == 400) {
+      bgImg = '../../images/snowy.jpg'
+    }
+    if (i == 300) {
+      bgImg = '../../images/rain.jpg'
+    }
+    if (i == 100) {
+      bgImg = '../../images/sunny.jpg'
+    }
+    this.setData({
+      pBackgroundImg: bgImg
+    });
   }
 })

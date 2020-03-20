@@ -1,5 +1,5 @@
 <!--pages/weather/weather.wxml-->
-<view id="app" class="app" style="background-image: url('{{ imgUrl }}'); height: {{ windowHeight }}px">
+<view id="app" class="app" style="background-image: url('{{ pBackgroundImg }}'); height: {{ windowHeight }}px">
   <view class="cu-bar bg-shadeTop search fixed" style="top:{{CustomBar}}px">
     <view class="search-form round">
       <text class="cuIcon-search"></text>
