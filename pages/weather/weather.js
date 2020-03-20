@@ -1,5 +1,4 @@
 // pages/weather/weather.js
-// var app = getApp();
 const app = getApp();
 var urlPrefix = require('../../configuration.js').urlPrefix;
 var weatherKey = require('../../configuration.js').weatherKey;
@@ -12,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    code:'',
     date: '',
     CustomBar: app.globalData.CustomBar,
     imgUrl: '../../images/warm-bg.jpg',
@@ -31,6 +31,7 @@ Page({
     var month = util.formatDate_month(new Date());
     var day = util.formatDate_day(new Date());
     var time
+    var code
     switch (month) {
       case '010':
         time = 'Jan' + day;
@@ -87,9 +88,9 @@ Page({
         })
       }
     })
+    // switch(that.now.cond_code){
 
-
-
+    // }
     console.log(urlPrefix)
     var that = this
     // console.log(app.globalData)
