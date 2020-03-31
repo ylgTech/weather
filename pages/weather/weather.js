@@ -2,6 +2,7 @@
 // var app = getApp();
 
 var urlPrefix = require('../../configuration.js').urlPrefix;
+var surlPrefix = require('../../configuration.js').surlPrefix;
 var weatherKey = require('../../configuration.js').weatherKey;
 
 Page({
@@ -14,30 +15,43 @@ Page({
     temp: 15,
   },
 
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
+    var that = this;
     wx.request({
       url: urlPrefix + '/now',
-      method: 'GET',
+      // url: 'https://free-api.heweather.net/s6/weather/now??location=beijing&key=fb5dedeb60954c9d8cee4719a10039c5',
+      method: 'GET',  
       data: {
         location: 'changsha',
         key: weatherKey,
       },
       success: function (res) {
         console.log(res)
+        let time = res.header.Date.split(" ")
         that.setData({
           basic: res.data.HeWeather6[0].basic,
           now: res.data.HeWeather6[0].now,
+          date: time[1] + "  " + time[2],
         })
+        if (res.data.HeWeather6[0].now.tmp >= 16) {
+          that.setData({
+            imgUrl: '../../images/warm-bg.jpg',
+          })
+        }
+        else {
+          that.setData({
+            imgUrl: '../../images/cold-bg.jpg',
+          })
+        }
       }
     })
 
 
 
-    console.log(urlPrefix)
     var that = this
     // console.log(app.globalData)
     wx.getSystemInfo({
@@ -97,5 +111,54 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  searchword: function (evt) {
+
+    let searchword = evt.detail.value;
+    var that = this;
+    wx.request({
+      url: urlPrefix + '/now',
+      // url: 'https://free-api.heweather.net/s6/weather/now??location=beijing&key=fb5dedeb60954c9d8cee4719a10039c5',
+      method: 'GET',
+      data: {
+        location: searchword,
+        key: weatherKey,
+      },
+      success: function (res) {
+        console.log(res)
+        let time = res.header.Date.split(" ")
+        that.setData({
+          basic: res.data.HeWeather6[0].basic,
+          now: res.data.HeWeather6[0].now,
+          date: time[1] + "  " + time[2],
+        })
+        if (res.data.HeWeather6[0].now.tmp >= 16) {
+          that.setData({
+            imgUrl: '../../images/warm-bg.jpg',
+          })
+        }
+        else {
+          that.setData({
+            imgUrl: '../../images/cold-bg.jpg',
+          })
+        }
+      }
+    })  
+    // let that = this;
+    // wx.request({
+    //   url: surlPrefix + '/find',
+    //   // url: 'https://free-api.heweather.net/s6/weather/now??location=beijing&key=fb5dedeb60954c9d8cee4719a10039c5',
+    //   method: 'GET',
+    //   data: {
+    //     location: searchword,
+    //     key: weatherKey,
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //   }
+    // })
+  },
+
+
 })

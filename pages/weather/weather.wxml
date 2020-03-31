@@ -1,17 +1,13 @@
 <!--pages/weather/weather.wxml-->
   <view id="app" class="app" style="background-image: url('{{ imgUrl }}'); height: {{ windowHeight }}px">
       <view class="search-box">
-        <input 
-          type="text" 
-          class="search-bar" 
-          placeholder="Search..."
-        />
+        <input type="text" class="search-bar" placeholder="Search..." bindconfirm="searchword"/>
       </view>
 
       <view class="weather-wrap" v-if="typeof weather.main != 'undefined'">
         <view class="location-box">
           <view class="location">{{ basic.parent_city }}</view>
-          <view class="date">March.19</view>
+          <view class="date">{{ date }}</view>
         </view>
 
         <view class="weather-box">
