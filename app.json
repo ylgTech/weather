@@ -2,14 +2,13 @@
   "pages": [
     "pages/weather/weather",
     "pages/index/index",
+
     "pages/logs/logs"
   ],
   "window": {
     "navigationStyle": "custom"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  }
+  "sitemapLocation": "sitemap.json"
+
 }
