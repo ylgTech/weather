@@ -11,6 +11,8 @@
 		"newFeature": true,
 		"coverView": true,
 		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -21,9 +23,9 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.3",
-	"appid": "wx45b2d4cc8fa40eac",
-	"projectname": "weather",
+	"libVersion": "2.10.4",
+	"appid": "wx0e56f5c9c2f09aaa",
+	"projectname": "weatherapp",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

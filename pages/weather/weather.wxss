@@ -1,18 +1,18 @@
-/* pages/weather/weather.wxss */
-
+/* pages/index/weather.wxss */
 body {
   font-family: 'montserrat', sans-serif;
 }
 
-#app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.app {
+  display:flex;
+  flex-direction:columan;
+  align-items:center;
+  justify-content:center;
   background-size: cover;
   background-position: bottom;
   transition: 0.4s;
 }
+
 
 main {
   min-height: 100vh;
