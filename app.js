@@ -1,7 +1,7 @@
 //app.js
 App({
-  onLaunch: function () {
-
+  onLaunch: function() {
+    // 展示本地存储能力    
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
@@ -9,9 +9,7 @@ App({
         this.globalData.Custom = custom;
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
-    })
-
-    // 展示本地存储能力
+    })//获取页面高度
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
